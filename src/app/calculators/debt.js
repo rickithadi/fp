@@ -1,4 +1,8 @@
-angular.module('inspinia').controller('controllerTesting', function($scope) {
+'use strict';
+
+
+angular.module('inspinia')
+.controller('controllerTesting', function($scope) {
 $scope.sharedetails = [{
     "event":"treat",
 
