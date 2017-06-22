@@ -1,33 +1,8 @@
 <body>
-  <table ng-controller="controllerTesting">
-    <th>Event</th>
-    <th>Spent by</th>
-    <th>Spent Amounts</th>
-    <th>Totalamount</th>
-    <th>Shared By</th>
-    <th>No of shares</th>
-    <th>ShareAmount</th>
-    <tr ng-repeat="sharedetail in sharedetails">
-      <td>{{sharedetail.event}}</td>
-      <td>
-        <li ng-repeat="item in sharedetail.expenselist">
-          {{item.text}}
-        </li>
-      </td>
-      <td>
-        <li ng-repeat="item in sharedetail.expenselist">
-          {{item.value}}
-        </li>
-      </td>
-      <td>{{sharedetail.expense}}</td>
-      </td>
-      <td>
-        <li ng-repeat="item in sharedetail.sharelist">
-          {{item.text}}
-        </li>
-      </td>
-      <td>{{sharedetail.shareno}}</td>
-      <td>{{sharedetail.shareamount}}</td>
-    </tr>
+  <table ng-controller="usersController">
+    <tr ng-repeat="user in users">
+      <td>{{user.user_Id}}</td>
+      <td>{{user.name}}</td>
+
   </table>
 </body>
