@@ -2,7 +2,8 @@
   "name": "qi_fp",
   "version": "0.1.0",
   "dependencies": {
-    "ng-table": "^3.0.1"
+    "ng-table": "^3.0.1",
+    "satellizer": "^0.15.5"
   },
   "scripts": {
     "test": "gulp test"

@@ -242,8 +242,8 @@ angular.module('inspinia').controller('retireController', function(retireService
     useHighStocks: false,
     //size (optional) if left out the chart will default to size of the div or something sensible.
     size: {
-      width: 1400,
-      height: 600
+      width: 600,
+      height: 400
     }
 
   }

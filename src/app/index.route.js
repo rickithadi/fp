@@ -7,6 +7,30 @@
 
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
+  var skipIfLoggedIn = ['$q', '$auth', function($q, $auth) {
+      var deferred = $q.defer();
+      if ($auth.isAuthenticated()) {
+        deferred.reject();
+      } else {
+        deferred.resolve();
+      }
+      return deferred.promise;
+    }];
+
+    var loginRequired = ['$q', '$location', '$auth', function($q, $location, $auth) {
+      var deferred = $q.defer();
+      if ($auth.isAuthenticated()) {
+        deferred.resolve();
+      } else {
+        $location.path('/login/home');
+      }
+      return deferred.promise;
+    }];
+
+  
+  
+  
+  
     $stateProvider
       .state('index', {
         abstract: true,
@@ -67,6 +91,36 @@
           templateUrl: "app/debt/debt.html",
           data: { pageTitle: 'Example view' }
         })
+         .state('login', {
+        abstract: true,
+        url: "/login",
+        templateUrl: "app/components/common/content.html"
+      })
+
+      .state('login.home', {
+        url: "/home",
+        templateUrl: "app/login/login_two_columns.html",
+        data: {
+          pageTitle: 'login view'
+        }
+      })
+      .state('login.forgot', {
+        url: "/forgot",
+        templateUrl: "app/login/forgot.html",
+        data: {
+          pageTitle: 'forgot view'
+        }
+           })
+
+      .state('login.register', {
+        url: "/register",
+        templateUrl: "app/login/register.html",
+        data: {
+          pageTitle: 'forgot view'
+        }
+        
+      })
+        
         .state('pie', {
           abstract: true,
           url: "/pie",
@@ -151,7 +205,7 @@
                         })
       ;
 
-    $urlRouterProvider.otherwise('/index/main');
+    $urlRouterProvider.otherwise('/login/home');
   }
 
 })();
